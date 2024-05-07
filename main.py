@@ -106,7 +106,6 @@ def main():
             user_directory = input("\nEnter the file path you want to search for: ")
             search_directory(user_directory)
 
-
             user_continue = input("Do you want to continue? (y/n): ")
             print()
 
