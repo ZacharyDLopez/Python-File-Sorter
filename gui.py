@@ -1,20 +1,41 @@
 from tkinter import *
-from tkinter import filedialog
+from tkinter import filedialog as fd
+import pathlib
 
+def select_file_path():
+    path_name = fd.askopenfilename
+    print(path_name)
+    
 def browseFiles():
-    #filename = filedialog.askopenfilename(initialdir = "/", title = "Select a File", filetypes = (("Text files", "*.txt*"), ("all files", "*.*")))
-    
-    #label_file_explorer.configure(text="File Opened: "+filename)
     window = Tk()
+    # window size, color, and title
     window.title("File Sorter")
-    window.geometry("500x500")
-    window.config(bg="black")
+    window.geometry("700x500")
+    window.configure(bg = "#2C2C2C")
+
+    # Textbox with file path
+
     
-    label_file_explorer = Label(window, text="File Explorer using Tkinter", width=100, height=4, fg="blue")
-    button_explore = Button(window, text="Browse Files", command=browseFiles)
+    # Text for Title, subheading, and buttons
+    title = "File Sorter"
+    subheading = "Click Browse to select a folder to sort"
+    browse_button = "Browse"
+    sort = "Sort"
+    open_folder = "Open Folder"
+
+    # Tooltip text
+    tooltip_text = "Please select a folder to sort in Browse"
     
-    button_explore.pack(pady=20)
-    label_file_explorer.pack(pady=20)
+    # Text Functionality
+
+    title_display = Label(window, text = title)
+    title_display.config(bg = "#2C2C2C", fg = "#D4D4D4",font=("Roboto", 40))
+
+    subheading_display = Label(window, text = subheading)
+    subheading_display.config(bg = "#2C2C2C", fg = "#D4D4D4",font = ("Roboto", 11))
     
+    title_display.place(relx = 0.33, rely = 0.1)
+    subheading_display.place(relx= 0.33, rely=0.24)
+
     window.mainloop()
 browseFiles()
