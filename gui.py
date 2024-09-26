@@ -1,13 +1,13 @@
 import tkinter as tk
-from tkinter.filedialog import askdirectory
-import pathlib
+from tkinter import filedialog
+import os as os
+import file_sorter
 
-def button_clicked():
-   askdirectory()
+def select_folder():
+   path = filedialog.askopenfilename(title='Please Select a Directory', filetypes=file_sorter.folder_names)
 
-def path_entry():
-    pass
-   
+   return path
+
 def browseFiles():
     window = tk.Tk()
     # Define window size, color, and title
@@ -15,18 +15,14 @@ def browseFiles():
     window.geometry("700x500")
     window.configure(bg = "#2C2C2C")
 
-    # Define textbox with file path
-    place_holder = "Please select a directory path"
-    path_entry = tk.Entry(window,
-                          textvariable=place_holder
-                          ,width=40
-                          ,font=('Roboto', 12,'bold'))
-
     #Define button functionality
+    current_directory = select_folder
+   
+
     browse_text = "Browse"
     browse_button = tk.Button(window, 
                    text=browse_text, 
-                   command=button_clicked,
+                   command=current_directory,
                    activebackground="blue", 
                    activeforeground="white",
                    anchor="center",
@@ -46,7 +42,7 @@ def browseFiles():
                    pady=5,
                    width=10,
                    wraplength=100)
-
+    '''
     sort_text = "Sort"
     sort_button = tk.Button(window, 
                    text=sort_text, 
@@ -70,7 +66,7 @@ def browseFiles():
                    pady=5,
                    width=10,
                    wraplength=100)
-
+    
     open_folder_text = "Open Folder"
     open_folder_button = tk.Button(window, 
                    text=open_folder_text, 
@@ -94,7 +90,11 @@ def browseFiles():
                    pady=5,
                    width=10,
                    wraplength=100)
-
+    '''
+    # Define textbox with file path
+    
+    #path_entry = tk.Text(window,font='Roboto')
+    #path_entry.insert(path_name)
 
     # Text for Title, subheading, and buttons
     title = "File Sorter"
@@ -116,10 +116,11 @@ def browseFiles():
     subheading_display.place(relx= 0.33, rely=0.24)
     path_entry.place(relx = 0.22,rely = 0.40)
     browse_button.place(relx= 0.22,rely=0.65)
+    
     sort_button.place(relx=0.42,rely= 0.65)
     sort_button.config(state="disabled")
     open_folder_button.place(relx=0.62,rely=0.65)
     open_folder_button.config(state="disabled")
-
+    
     window.mainloop()
 browseFiles()
